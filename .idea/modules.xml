@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/ML_Ticket_caisse.iml" filepath="$PROJECT_DIR$/.idea/ML_Ticket_caisse.iml" />
       <module fileurl="file://$PROJECT_DIR$/Ticket_caisse.iml" filepath="$PROJECT_DIR$/Ticket_caisse.iml" />
     </modules>
   </component>

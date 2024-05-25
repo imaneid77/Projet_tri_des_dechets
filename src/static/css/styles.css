@@ -15,6 +15,10 @@ header h1 {
     color: #fff;
 }
 
+.table thead th.text-center {
+    text-align: center;
+}
+
 .font-weight-bold {
     margin-top: 20px;
     padding: 10px;
@@ -28,14 +32,42 @@ header h1 {
     height: 50px;
 }
 
-.navbar .navbar-brand span {
-    font-size: 1.25rem;
-    color: #fff;
-}
 .custom-navbar {
-    background-color: #1E2A38 !important;  /* Change to your desired color */
+    background-color: #1E2A38;
 }
 
 .custom-navbar .navbar-nav {
     margin-left: 0;
+}
+
+.bg-footer {
+    background-color: #1E2A38;
+}
+
+footer h5 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer ul li {
+    margin-bottom: 0.5rem;
+}
+
+footer ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+footer ul li a:hover {
+    text-decoration: underline;
+}
+
+footer .mt-3 a {
+    color: white;
+    font-size: 1.5rem;
 }
