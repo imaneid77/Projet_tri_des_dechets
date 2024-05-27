@@ -1,73 +1,61 @@
 body {
+    font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-}
-
-header h1 {
-    color: #333;
-}
-
-.form-inline .form-control {
-    margin-right: 10px;
-}
-
-.table thead th {
-    background-color: #1E2A38;
-    color: #fff;
-}
-
-.table thead th.text-center {
+    margin: 0;
+    padding: 0;
     text-align: center;
 }
 
-.font-weight-bold {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #f8f9fa;
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1rem;
+}
+
+main {
+    padding: 2rem;
+}
+
+.upload-section {
+    margin: 2rem auto;
+    padding: 2rem;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    background-color: white;
+    max-width: 500px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.navbar .navbar-brand img {
-    width: 50px;
-    height: 50px;
-}
-
-.custom-navbar {
-    background-color: #1E2A38;
-}
-
-.custom-navbar .navbar-nav {
-    margin-left: 0;
-}
-
-.bg-footer {
-    background-color: #1E2A38;
-}
-
-footer h5 {
-    font-size: 1.25rem;
+.upload-section input {
     margin-bottom: 1rem;
+    display: block;
+    margin: 0 auto;
 }
 
-footer ul {
-    list-style: none;
-    padding: 0;
-}
-
-footer ul li {
-    margin-bottom: 0.5rem;
-}
-
-footer ul li a {
+.upload-section button {
+    padding: 0.5rem 1rem;
+    background-color: #4CAF50;
     color: white;
-    text-decoration: none;
+    border: none;
+    cursor: pointer;
 }
 
-footer ul li a:hover {
-    text-decoration: underline;
+.upload-section button:hover {
+    background-color: #45a049;
 }
 
-footer .mt-3 a {
+.result-section {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #e7ffe7;
+    border: 1px solid #4CAF50;
+    display: none;
+}
+
+footer {
+    background-color: #4CAF50;
     color: white;
-    font-size: 1.5rem;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }

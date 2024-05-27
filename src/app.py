@@ -1,44 +1,48 @@
 from flask import Flask, request, jsonify, render_template
-from werkzeug.utils import secure_filename
-import pytesseract
+from tensorflow.keras.models import load_model
+from tensorflow.keras.preprocessing import image
+import numpy as np
+import os
 from PIL import Image
-import re
+import io
 
 app = Flask(__name__)
 
-def extract_information(text):
-    total = re.search(r'Total\s*:\s*(\d+,\d{2})', text)
-    tva = re.search(r'TVA\s*:\s*(\d+,\d{2})', text)
-    date = re.search(r'Date\s*:\s*(\d{2}/\d{2}/\d{4})', text)
-    etablissement = re.search(r'Établissement\s*:\s*(.*)', text)
+# Définir le chemin absolu vers le modèle
+MODEL_PATH = os.path.join(os.path.dirname(__file__), 'data', 'vgg16_trained_model.h5')
 
-    return {
-        'total': total.group(1) if total else 'Non trouvé',
-        'tva': tva.group(1) if tva else 'Non trouvé',
-        'date': date.group(1) if date else 'Non trouvé',
-        'etablissement': etablissement.group(1) if etablissement else 'Non trouvé'
-    }
+# Chargement du modèle
+model = load_model(MODEL_PATH)
+
+# Mapping des classes (à ajuster selon votre modèle)
+class_names = ['crumpled_paper', 'disposable_paper_cups', 'egg_packaging', 'foil', 'glass_bottle', 'plastic_bottle', 'receipt']
 
 @app.route('/')
-def index():
+def home():
     return render_template('front.html')
 
-@app.route('/process', methods=['POST'])
-def process_image():
+@app.route('/predict', methods=['POST'])
+def predict():
     if 'file' not in request.files:
         return jsonify({'error': 'No file part'})
-
     file = request.files['file']
     if file.filename == '':
         return jsonify({'error': 'No selected file'})
+    if file:
+        # Lire le fichier comme une image
+        img = Image.open(io.BytesIO(file.read()))
+        # Redimensionner l'image
+        img = img.resize((128, 128))  # Redimensionner à la taille attendue par le modèle
+        # Convertir l'image en tableau numpy
+        img_array = image.img_to_array(img)
+        img_array = np.expand_dims(img_array, axis=0) / 255.0
 
-    filename = secure_filename(file.filename)
-    file.save(filename)
+        # Prédiction
+        predictions = model.predict(img_array)
+        predicted_class = np.argmax(predictions[0])
+        predicted_class_name = class_names[predicted_class]
 
-    text = pytesseract.image_to_string(Image.open(filename), lang='eng')
-    data = extract_information(text)
-
-    return jsonify(data)
+        return jsonify({'class': predicted_class_name})
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,114 +10,22 @@
     <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 <body>
-<!-- Barre de navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
-    <a class="navbar-brand d-flex align-items-center" href="#">
-        <img src="/static/Spendo.jpg" width="50" height="50" class="d-inline-block align-top" alt="Logo">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a id="addExpenseNoteButton" class="nav-link btn btn-light text-dark mr-2" href="#">Ajouter une note de frais</a>
-                <input type="file" id="fileInput" style="display: none;">
-            </li>
-        </ul>
-        <div class="ml-auto">
-            <a class="nav-link btn btn-light text-dark d-flex align-items-center" href="#">
-                <i class="bi bi-person-circle mr-2"></i>Se connecter
-            </a>
-        </div>
-    </div>
-</nav>
-
-<div class="container mt-5">
-    <header class="mb-4">
-        <h1 class="text-center">Administration des Notes de Frais</h1>
-    </header>
-    <section class="filters mb-4">
-        <form class="form-inline justify-content-center">
-            <label for="status" class="mr-2">État</label>
-            <select id="status" class="form-control mr-2">
-                <option value="to_validate">À valider</option>
-                <option value="validated">Validé</option>
-                <option value="refused">Refusé</option>
-            </select>
-            <label for="period" class="mr-2">Période du</label>
-            <input type="date" id="start_date" class="form-control mr-2">
-            <label for="to" class="mr-2">au</label>
-            <input type="date" id="end_date" class="form-control mr-2">
-        </form>
+<header>
+    <h1>EcoTri</h1>
+    <p>Tri Intelligente des Déchets</p>
+</header>
+<main>
+    <section class="upload-section">
+        <h2>Uploader une image de déchet</h2>
+        <input type="file" id="imageInput">
+        <button onclick="uploadImage()">Classer le déchet</button>
     </section>
-    <section class="results">
-        <table class="table table-striped table-bordered">
-            <thead class="thead-dark text-center">
-            <tr>
-                <th>Date</th>
-                <th>Etablissement</th>
-                <th>Montant HT</th>
-                <th>TVA</th>
-                <th>Montant TTC</th>
-                <th>Statut</th>
-                <th><i class="bi bi-eye"></i></th>
-            </tr>
-            </thead>
-            <tbody id="resultsBody">
-            <!-- Data -->
-            </tbody>
-        </table>
-        <div class="d-flex justify-content-between font-weight-bold">
-            <p>Total :</p>
-        </div>
+    <section class="result-section" id="resultSection">
+        <h3>Résultat de la classification :</h3>
+        <p id="resultText"></p>
     </section>
-</div>
+</main>
 
-<!-- Pied de page -->
-<footer class="bg-footer text-white mt-5">
-    <div class="container py-2">
-        <div class="row">
-            <div class="col-md-3">
-                <img src="/static/Spendo.jpg" width="100" height="100" class="d-inline-block align-top" alt="Logo">
-                <p class="mt-2">&copy; 2024 Spendo. Tous droits réservés.</p>
-            </div>
-            <div class="col-md-3">
-                <h5 class="mb-2">SERVICES</h5>
-                <ul class="list-unstyled">
-                    <li><a href="#" class="text-white">Offres</a></li>
-                    <li><a href="#" class="text-white">Fonctionnalités</a></li>
-                    <li><a href="#" class="text-white">Référencement</a></li>
-                    <li><a href="#" class="text-white">Idées pour la création de site</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3">
-                <h5 class="mb-2">A PROPOS</h5>
-                <ul class="list-unstyled">
-                    <li><a href="#" class="text-white">Partenariat</a></li>
-                    <li><a href="#" class="text-white">Presse</a></li>
-                    <li><a href="#" class="text-white">Mentions légales</a></li>
-                    <li><a href="#" class="text-white">Politique de confidentialité</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3">
-                <h5 class="mb-2">ACCOMPAGNEMENT</h5>
-                <ul class="list-unstyled">
-                    <li><a href="#" class="text-white">Nouveautés</a></li>
-                    <li><a href="#" class="text-white">FAQ</a></li>
-                    <li><a href="#" class="text-white">Contactez-nous</a></li>
-                </ul>
-                <div class="mt-2">
-                    <a href="#" class="text-white mr-2"><i class="bi bi-facebook"></i></a>
-                    <a href="#" class="text-white mr-2"><i class="bi bi-twitter"></i></a>
-                    <a href="#" class="text-white mr-2"><i class="bi bi-linkedin"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
-<!-- Inclusion des dépendances Bootstrap JS -->
-<!-- J'aimerai bien les inclures autre part  -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
