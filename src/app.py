@@ -14,7 +14,7 @@ MODEL_PATH = os.path.join(os.path.dirname(__file__), 'data', 'vgg16_trained_mode
 # Chargement du modèle
 model = load_model(MODEL_PATH)
 
-# Mapping des classes (à ajuster selon votre modèle)
+# Mapping des classes
 class_names = ['crumpled_paper', 'disposable_paper_cups', 'egg_packaging', 'foil', 'glass_bottle', 'plastic_bottle', 'receipt']
 
 @app.route('/')
@@ -31,9 +31,9 @@ def predict():
     if file:
         # Lire le fichier comme une image
         img = Image.open(io.BytesIO(file.read()))
-        # Redimensionner l'image
-        img = img.resize((128, 128))  # Redimensionner à la taille attendue par le modèle
-        # Convertir l'image en tableau numpy
+        # on redimensionne l'image à la taille attendu par le modèle
+        img = img.resize((128, 128))
+        # on convertit l'image en tableau numpy
         img_array = image.img_to_array(img)
         img_array = np.expand_dims(img_array, axis=0) / 255.0
 
