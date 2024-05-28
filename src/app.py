@@ -8,8 +8,8 @@ import io
 
 app = Flask(__name__)
 
-# Définir le chemin absolu vers le modèle
-MODEL_PATH = os.path.join(os.path.dirname(__file__), 'data', 'vgg16_trained_model.h5')
+# chemin vers le modèle
+MODEL_PATH = os.path.join(os.path.dirname(__file__), 'modele', 'vgg16_trained_model.h5')
 
 # Chargement du modèle
 model = load_model(MODEL_PATH)
@@ -29,7 +29,7 @@ def predict():
     if file.filename == '':
         return jsonify({'error': 'No selected file'})
     if file:
-        # Lire le fichier comme une image
+        # on lit le fichier comme une image
         img = Image.open(io.BytesIO(file.read()))
         # on redimensionne l'image à la taille attendu par le modèle
         img = img.resize((128, 128))

@@ -59,3 +59,11 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+.trash-icon {
+    width: 50px;
+    margin-left: 10px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
