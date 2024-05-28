@@ -8,23 +8,32 @@
     <!-- Inclusion de Bootstrap Icons CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/styles.css">
+    <title>EcoTri - Tri Intelligente des Déchets</title>
 </head>
 <body>
-<header>
+<header class="bg-success text-white text-center py-4">
     <h1>EcoTri</h1>
     <p>Tri Intelligente des Déchets</p>
 </header>
-<main>
-    <section class="upload-section">
-        <h2>Uploader une image de déchet</h2>
-        <input type="file" id="imageInput">
-        <button onclick="uploadImage()">Classer le déchet</button>
-    </section>
-    <section class="result-section" id="resultSection">
-        <h3>Résultat de la classification :</h3>
-        <p id="resultText"></p>
-    </section>
+<main class="container my-4">
+    <div class="row">
+        <div class="col-md-6">
+            <section class="upload-section">
+                <h2>Uploader une image de déchet</h2>
+                <input type="file" id="imageInput" class="form-control mb-2">
+                <button class="btn btn-success" onclick="uploadImage()">Classer le déchet</button>
+            </section>
+        </div>
+        <div class="col-md-6">
+            <section class="result-section" id="resultSection">
+                <h3>Résultat de la classification :</h3>
+                <p id="resultText"></p>
+                <img id="uploadedImage" src="#" alt="Image chargée" class="img-fluid" style="display: none;"/>
+            </section>
+        </div>
+    </div>
 </main>
+
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
