@@ -31,9 +31,9 @@ def predict():
     if file:
         # on lit le fichier comme une image
         img = Image.open(io.BytesIO(file.read()))
-        # on redimensionne l'image à la taille attendu par le modèle
+        # on redimensionne l'image à la taille attendu par le modèle: 128*128*3
         img = img.resize((128, 128))
-        # on convertit l'image en tableau numpy
+        # on l'image en tableau numpy et normalise les valeurs de pixels
         img_array = image.img_to_array(img)
         img_array = np.expand_dims(img_array, axis=0) / 255.0
 
